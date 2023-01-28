@@ -1,19 +1,7 @@
 import { create } from 'zustand';
-import { persist, devtools, createJSONStorage, StateStorage } from 'zustand/middleware';
-import { Item, ItemPayload } from '../models/item.model';
-
-
-type Store = {
-    items: ItemPayload[];
-    setItemData: (val: any) => void;
-    addItem: (val: any) => void;
-    clear: () => void;
-};
-
-type CartStore = {
-    isCart: boolean;
-    showCart: (payload: boolean) => void;
-};
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { ItemPayload } from '../models/item.model';
+import { CartStore, Category, FilterStore, Store } from '../models/store.model';
 
 export const useItemStore = create<Store>()(
     persist(
@@ -55,5 +43,30 @@ export const useCartStore = create<CartStore>((set) => ({
             isCart: payload
         }));
     },
+}));
+
+export const useFilterStore = create<FilterStore>((set) => ({
+    category: {
+        name: "",
+        isActive: false
+    },
+    setFilter(payload: Category) {
+        set((state) => ({
+            ...state,
+            category: {
+                name: payload.name,
+                isActive: !payload.isActive
+            }
+        }));
+    },
+    clearFilter() {
+        set((state) => ({
+            ...state,
+            category: {
+                name: "",
+                isActive: false
+            }
+        }));
+    }
 }))
 

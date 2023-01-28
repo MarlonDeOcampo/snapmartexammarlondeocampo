@@ -16,14 +16,14 @@ const Layout = ({ children }: Props) => {
         setToggled(prev => !prev);
     }, []);
     return (
-        <div className="relative">
+        <div className="relative bg-neutral">
             <Header />
-            <div className={`h-[calc(100%-7rem)] fixed z-10 shadow-lg bg-white w-[${!toggled ? "5rem" : "20rem"}]`}>
+            <div className={`h-[calc(100%-7rem)] fixed z-10 shadow-lg bg-white w-[${!toggled ? "5rem" : "18rem"}]`}>
                 <div>
                     <Sidebar toggled={toggled} toggleMenu={toggleMenu} />
                 </div>
             </div>
-            <div className={`${!toggled ? "w-[calc(100%-5rem)]  ml-[5rem] " : "w-[calc(100%-20rem)]  ml-[20rem]"} overflow-auto `}>
+            <div className={`${!toggled ? "w-[calc(100%-5rem)]  ml-[5rem] " : "w-[calc(100%-18rem)]  ml-[18rem]"} overflow-auto`}>
                 {children}
             </div>
             <Footer />

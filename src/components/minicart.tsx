@@ -27,7 +27,7 @@ const MiniCart = () => {
                     <div className="overflow-y-auto">
                         <div className="max-h-[50vh]">
                             {items.map((item) => (
-                                <CartItem item={item} />
+                                <CartItem item={item} key={item.id} />
                             ))}
                         </div>
                     </div>

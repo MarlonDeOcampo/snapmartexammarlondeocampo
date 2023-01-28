@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({ data: items }) => {
                 {items && items.map((item, i) => (
                     <div
                         key={item.id}
-                        className="relative p-5 m-1 cursor-pointer border border-[#F5F5F5] w-[14rem] h-[22rem] text-gray-600 flex flex-col justify-between shadow-lg"
+                        className="relative p-5 m-1 cursor-pointer border border-[#F5F5F5] w-[14rem] h-[22rem] text-gray-600 flex flex-col justify-between shadow-lg "
                     >
                         <div className="h-full">
                             <div className="flex justify-center py-4 ">
