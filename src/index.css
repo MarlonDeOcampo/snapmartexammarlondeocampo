@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 body {
+    font-family: "Nunito Sans", sans-serif;
     overflow: hidden !important;
+}
+
+.text-ellipsis3 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
