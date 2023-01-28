@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Layout from './components/layout/layout';
+import Products from './components/products';
 
-function App() {
+const Home = lazy(() => import('./pages/home'));
+
+const App: React.FC = () => {
 
   return (
-    <div className="App">
+    <Suspense fallback={<div>Loading...</div>}>
+      <Layout>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path='products' element={<Products />} />
+          </Route>
+        </Routes>
+      </Layout>
+    </Suspense>
 
-    </div>
   );
-}
+};
 
 export default App;
