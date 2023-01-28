@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: {
         "primary": "#17392d",
-        "secondary": "#87eaa7"
+        "secondary": "#68A61C"
       },
       gridTemplateColumns: {
         'cards': 'repeat(auto-fill, 250px)'

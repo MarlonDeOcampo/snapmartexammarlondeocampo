@@ -8,7 +8,6 @@ interface Props {
 
 const Card: React.FC<Props> = ({ data: items }) => {
     const addItem = useItemStore(state => state.addItem);
-    // const itemRef: React.MutableRefObject<HTMLDivElement[] | null[]> = useRef([]);
     const addItemToCart = (item: Item) => {
         console.log(item);
         addItem(item);
