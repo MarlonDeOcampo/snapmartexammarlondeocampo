@@ -24,7 +24,7 @@ const SuccessModal = ({
                         <ExitIcon width="14px" height="14px" />
                     </div>
                     <div className="flex flex-col justify-center items-center gap-4">
-                        <img src={"src/assets/check-icon.png"} alt="image" width="100px" height="100px" />
+                        <img src="https://i.ibb.co/x2G4dJ8/check-icon.png" alt="image" width="100px" height="100px" />
                         <h3 className="text-[#48c49c] font-bold text-lg">{title.toUpperCase()}</h3>
                         <div className="font-bold text-primary">{message}</div>
                     </div>
