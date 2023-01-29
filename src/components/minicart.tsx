@@ -5,7 +5,7 @@ import { useCartStore, useItemStore } from "../store/useStore";
 import CartItem from "./cart-item";
 import ExitIcon from "./svg/exit-icon";
 
-const MiniCart = () => {
+const MiniCart: React.FC = () => {
     const items = useItemStore(state => state.items);
     const showCart = useCartStore(state => state.showCart);
     const clear = useItemStore(state => state.clear);

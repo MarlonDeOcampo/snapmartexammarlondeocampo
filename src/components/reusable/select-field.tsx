@@ -11,7 +11,7 @@ type Props = {
     value: string;
 };
 
-const SelectField = ({ classes, label, options, disabled, setValue, value, ...rest }: Props) => {
+const SelectField: React.FC<Props> = ({ classes, label, options, disabled, setValue, value }: Props) => {
     const [isOption, setIsOption] = useState<boolean>(false);
 
     const optionRef = useRef<HTMLInputElement>(null);

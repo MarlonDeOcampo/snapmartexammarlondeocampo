@@ -1,4 +1,4 @@
-const Products = () => {
+const Products: React.FC = () => {
     return (
         <div>this is products</div>
     );

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Category } from "../../models/store.model";
+import { useSearchStore } from "../../store/useGlobalStore";
 import { useFilterStore } from "../../store/useStore";
 import SearchBar from "../reusable/searchbar";
 import Toggle from "../svg/toggle";
@@ -13,7 +14,8 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
     const setFilter = useFilterStore(state => state.setFilter);
     const category = useFilterStore(state => state.category);
     const clearFilter = useFilterStore(state => state.clearFilter);
-    const searchRef = useRef<HTMLInputElement | null>(null);
+    const clearSearch = useSearchStore(state => state.clearSearch);
+    const searchRef = useRef<HTMLInputElement>(null);
     const categoryItem = [
         { name: "Cloths", isActive: false },
         { name: "Gadgets", isActive: false },
@@ -24,6 +26,11 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
         { name: "LifeStyle", isActive: false }
     ];
 
+
+    const toggleClearFilter = () => {
+        clearFilter();
+        clearSearch();
+    };
     return (
         <div className="w-full">
             <div className="px-2 py-10 flex justify-end">
@@ -36,9 +43,9 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
                 :
                 <div className="px-4">
                     <div className="flex justify-end mb-4">
-                        <button className="text-sm text-red-500" onClick={clearFilter}>Reset Filter</button>
+                        <button className="text-sm text-red-500" onClick={toggleClearFilter}>Reset Filter</button>
                     </div>
-                    <SearchBar />
+                    <SearchBar ref={searchRef} />
                     <div className="mb-2 flex items-center mt-4">
                         <div className="text-xl font-semibold">Categories</div>
                     </div>

@@ -21,12 +21,12 @@ export const useItemStore = create<Store>()(
                             Arr.push(item);
                         }
                     });
-
+                    const total = get().items.reduce((total: number, item: ItemPayload) => {
+                        return total + item.count;
+                    }, 0);
                     set(() => ({
                         items: Arr,
-                        totalItems: get().items.reduce((total: number, item: ItemPayload) => {
-                            return total + item.count;
-                        }, 0)
+                        totalItems: total
                     }));
 
                 } else {

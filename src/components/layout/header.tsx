@@ -2,7 +2,7 @@ import { useCartStore } from "../../store/useStore";
 import MiniCart from "../minicart";
 import Carticon from "../svg/cart-icon";
 
-const Header = () => {
+const Header: React.FC = () => {
     const isCart = useCartStore(state => state.isCart);
     const showCart = useCartStore(state => state.showCart);
     return (

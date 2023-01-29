@@ -3,6 +3,7 @@ import { create } from 'zustand';
 export type searchStore = {
     searchString: string;
     setSearchString: (val: string) => void;
+    clearSearch: () => void;
 };
 
 export type sortStore = {
@@ -19,8 +20,12 @@ export const useSearchStore = create<searchStore>((set) => ({
     searchString: "",
     setSearchString(payload: string) {
         set((state) => ({
-            ...state,
             searchString: payload
+        }));
+    },
+    clearSearch() {
+        set(() => ({
+            searchString: ""
         }));
     }
 }));
