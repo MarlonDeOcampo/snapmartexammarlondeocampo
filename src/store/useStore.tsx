@@ -1,30 +1,95 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { ItemPayload } from '../models/item.model';
+import { Item, ItemPayload } from '../models/item.model';
 import { CartStore, Category, FilterStore, Store } from '../models/store.model';
 
 export const useItemStore = create<Store>()(
     persist(
-        (set, get: () => any) => ({
+        (set, get: Function) => ({
             items: [],
-            setItemData(payload: ItemPayload) {
-                set((state: any) => ({
-                    ...state,
-                    item: [],
-                }));
+            totalItems: 0,
+
+            addItem(payload: Item) {
+                const data: ItemPayload[] = get().items;
+                if (data.some(item => item.id === payload.id)) {
+                    const Arr: ItemPayload[] = [];
+                    data.forEach((item: ItemPayload) => {
+                        if (item.id === payload.id) {
+                            item.count = item.count + 1;
+                            Arr.push(item);
+                        } else {
+                            Arr.push(item);
+                        }
+                    });
+
+                    set(() => ({
+                        items: Arr,
+                        totalItems: get().items.reduce((total: number, item: ItemPayload) => {
+                            return total + item.count;
+                        }, 0)
+                    }));
+
+                } else {
+                    set((state: any) => ({
+                        items: [
+                            { ...payload, count: 1 },
+                            ...state.items,
+                        ],
+                        totalItems: get().items.reduce((total: number, item: ItemPayload) => {
+                            return total + item.count;
+                        }, 0)
+                    }));
+                }
             },
 
-            addItem(payload: any) {
-                set((state: any) => ({
-                    items: [
-                        { ...payload, count: 1 },
-                        ...state.items,
-                    ],
-                }));
-            },
             clear: () => {
                 set(() => ({
                     items: [],
+                }));
+            },
+            increment(id: string) {
+                const data: ItemPayload[] = get().items;
+                const Arr: ItemPayload[] = [];
+                data.forEach((item: ItemPayload) => {
+                    if (item.id === id) {
+                        item.count = item.count + 1;
+                        Arr.push(item);
+                    } else {
+                        Arr.push(item);
+                    }
+
+                });
+                set(() => ({
+                    items: Arr
+                }));
+            },
+            decrement(id: string) {
+                const data: ItemPayload[] = get().items;
+                const Arr: ItemPayload[] = [];
+                data.forEach((item: ItemPayload) => {
+                    if (item.id === id) {
+                        item.count = item.count - 1;
+                        Arr.push(item);
+                    } else {
+                        Arr.push(item);
+                    }
+                });
+                set(() => ({
+                    items: Arr
+                }));
+            },
+            remove(id: string) {
+                const data: ItemPayload[] = get().items;
+                const Arr: ItemPayload[] = [];
+                data.forEach((item: ItemPayload) => {
+                    if (item.id === id) {
+                        return;
+                    } else {
+                        Arr.push(item);
+                    }
+                });
+                set(() => ({
+                    items: Arr
                 }));
             }
         }),
@@ -42,7 +107,7 @@ export const useCartStore = create<CartStore>((set) => ({
             ...state,
             isCart: payload
         }));
-    },
+    }
 }));
 
 export const useFilterStore = create<FilterStore>((set) => ({

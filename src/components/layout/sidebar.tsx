@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useRef } from "react";
 import { Category } from "../../models/store.model";
 import { useFilterStore } from "../../store/useStore";
+import SearchBar from "../reusable/searchbar";
 import Toggle from "../svg/toggle";
 
 type Props = {
@@ -12,6 +13,7 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
     const setFilter = useFilterStore(state => state.setFilter);
     const category = useFilterStore(state => state.category);
     const clearFilter = useFilterStore(state => state.clearFilter);
+    const searchRef = useRef<HTMLInputElement | null>(null);
     const categoryItem = [
         { name: "Cloths", isActive: false },
         { name: "Gadgets", isActive: false },
@@ -33,9 +35,12 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
                 <div></div>
                 :
                 <div className="px-4">
-                    <div className="mb-2 flex justify-between items-center">
+                    <div className="flex justify-end mb-4">
+                        <button className="text-sm text-red-500" onClick={clearFilter}>Reset Filter</button>
+                    </div>
+                    <SearchBar />
+                    <div className="mb-2 flex items-center mt-4">
                         <div className="text-xl font-semibold">Categories</div>
-                        <button className="text-sm text-red-500" onClick={clearFilter}>Reset</button>
                     </div>
                     <hr></hr>
                     <div className="mt-4 w-[16rem]">

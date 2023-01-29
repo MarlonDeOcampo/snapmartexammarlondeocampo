@@ -1,9 +1,12 @@
-import { ItemPayload } from "./item.model";
+import { Item, ItemPayload } from "./item.model";
 
 export type Store = {
     items: ItemPayload[];
-    setItemData: (val: any) => void;
-    addItem: (val: any) => void;
+    totalItems: number;
+    addItem: (val: Item) => void;
+    increment: (val: string) => void;
+    decrement: (val: string) => void;
+    remove: (val: string) => void;
     clear: () => void;
 };
 

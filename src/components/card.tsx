@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
-import { Item, ItemPayload } from "../../models/item.model";
-import { useItemStore } from "../../store/useStore";
+import { Item } from "../models/item.model";
+import { useItemStore } from "../store/useStore";
 
 interface Props {
     data: Item[];
@@ -9,15 +8,11 @@ interface Props {
 const Card: React.FC<Props> = ({ data: items }) => {
     const addItem = useItemStore(state => state.addItem);
     const addItemToCart = (item: Item) => {
-        console.log(item);
         addItem(item);
     };
 
-    // useEffect(() => {
-    //     console.log(items[0]);
-    // }, [items]);
     return (
-        <div className="overflow-auto relative mt-14">
+        <div className="overflow-auto relative my-5 ml-5">
             <div className="h-[80vh] grid grid-cols-cards justify-around gap-y-4">
                 {items && items.map((item, i) => (
                     <div
