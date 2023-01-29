@@ -30,7 +30,7 @@ export const useItemStore = create<Store>()(
                     }));
 
                 } else {
-                    set((state) => ({
+                    set((state: any) => ({
                         items: [
                             { ...payload, count: 1 },
                             ...state.items,
