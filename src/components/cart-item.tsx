@@ -20,7 +20,10 @@ const CartItem: React.FC<Props> = ({ item }) => {
                     </div>
                     <div className="text-sm ml-4">
                         <div>{item.productName}</div>
-                        <div className="font-semibold">₱  {(item.unitPrice * item.count).toFixed(2)}</div>
+                        <div className="font-semibold">₱  {(item.unitPrice * item.count).toLocaleString(
+                            undefined,
+                            { minimumFractionDigits: 2 }
+                        )}</div>
                     </div>
                 </div>
 

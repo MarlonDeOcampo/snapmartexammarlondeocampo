@@ -1,6 +1,5 @@
 import { ReactNode, useCallback, useState } from "react";
 import { useSuccessModalStore } from "../../store/useGlobalStore";
-import MiniCart from "../minicart";
 import SuccessModal from "../modal/success.modal";
 import Footer from "./footer";
 import Header from "./header";
@@ -8,7 +7,6 @@ import Sidebar from "./sidebar";
 
 interface Props {
     children?: ReactNode;
-    // any props that come into the component
 }
 
 const Layout = ({ children }: Props) => {
@@ -37,4 +35,3 @@ const Layout = ({ children }: Props) => {
 };
 
 export default Layout;
-<div></div>;

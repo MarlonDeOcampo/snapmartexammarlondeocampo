@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ItemPayload } from "../models/item.model";
 import { useSuccessModalStore } from "../store/useGlobalStore";
 import { useCartStore, useItemStore } from "../store/useStore";
@@ -73,7 +73,10 @@ const MiniCart: React.FC = () => {
                         </div>
                         <div className="flex justify-between font-semibold">
                             <div className="flex items-end">Total Amount</div>
-                            <div className="text-xl text-red-500">₱ {totalPrice.toFixed(2)}</div>
+                            <div className="text-xl text-red-500">₱ {totalPrice.toLocaleString(
+                                undefined,
+                                { minimumFractionDigits: 2 }
+                            )}</div>
                         </div>
                         <button className="bg-secondary hover:bg-primary text-white py-2" onClick={onCheckout}>Checkout</button>
                     </div>

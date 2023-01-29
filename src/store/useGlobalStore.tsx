@@ -1,20 +1,30 @@
 import { create } from 'zustand';
+import { searchStore, sortStore, SuccessModalStore } from '../models/store.model';
 
-export type searchStore = {
-    searchString: string;
-    setSearchString: (val: string) => void;
-    clearSearch: () => void;
-};
 
-export type sortStore = {
-    sortby: string;
-    setSortString: (val: string) => void;
-};
 
-export type SuccessModalStore = {
-    isOpen: boolean;
-    setisOpen: (val: boolean) => void;
-};
+export const useSortStore = create<sortStore>((set) => ({
+    sortby: "",
+    setSortString(payload: string) {
+        set((state) => ({
+            sortby: payload
+        }));
+    },
+    clearSort() {
+        set(() => ({
+            sortby: "Low to High"
+        }));
+    }
+}));
+
+export const useSuccessModalStore = create<SuccessModalStore>((set) => ({
+    isOpen: false,
+    setisOpen(payload: boolean) {
+        set(() => ({
+            isOpen: payload
+        }));
+    }
+}));
 
 export const useSearchStore = create<searchStore>((set) => ({
     searchString: "",
@@ -26,24 +36,6 @@ export const useSearchStore = create<searchStore>((set) => ({
     clearSearch() {
         set(() => ({
             searchString: ""
-        }));
-    }
-}));
-
-export const useSortStore = create<sortStore>((set) => ({
-    sortby: "",
-    setSortString(payload: string) {
-        set((state) => ({
-            sortby: payload
-        }));
-    }
-}));
-
-export const useSuccessModalStore = create<SuccessModalStore>((set) => ({
-    isOpen: false,
-    setisOpen(payload: boolean) {
-        set(() => ({
-            isOpen: payload
         }));
     }
 }));

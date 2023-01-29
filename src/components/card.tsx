@@ -36,7 +36,10 @@ const Card: React.FC<Props> = ({ data: items }) => {
                             <div className="text-sm">
                                 <p className="text-ellipsis3 text-xs">{item.description}</p>
                             </div>
-                            <div className="mt-2 text-red-500 font-semibold">₱ {item.unitPrice}</div>
+                            <div className="mt-2 text-red-500 font-semibold">₱ {item.unitPrice.toLocaleString(
+                                undefined,
+                                { minimumFractionDigits: 2 }
+                            )}</div>
                         </div>
                         <button
                             className="bg-secondary hover:bg-primary w-full py-2 text-white text-sm"

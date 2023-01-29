@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { forwardRef } from "react";
 import { useSearchStore } from "../../store/useGlobalStore";
 
 
-const SearchBar = React.forwardRef<HTMLInputElement>((props, ref) => {
+const SearchBar = forwardRef<HTMLInputElement>((props, ref) => {
     const setSearchString = useSearchStore(state => state.setSearchString);
     const searchString = useSearchStore(state => state.searchString);
 

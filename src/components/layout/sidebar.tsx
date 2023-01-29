@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Category } from "../../models/store.model";
-import { useSearchStore } from "../../store/useGlobalStore";
+import { useSearchStore, useSortStore } from "../../store/useGlobalStore";
 import { useFilterStore } from "../../store/useStore";
 import SearchBar from "../reusable/searchbar";
 import Toggle from "../svg/toggle";
@@ -15,6 +15,7 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
     const category = useFilterStore(state => state.category);
     const clearFilter = useFilterStore(state => state.clearFilter);
     const clearSearch = useSearchStore(state => state.clearSearch);
+    const clearSort = useSortStore(state => state.clearSort);
     const searchRef = useRef<HTMLInputElement>(null);
     const categoryItem = [
         { name: "Cloths", isActive: false },
@@ -26,11 +27,12 @@ const Sidebar: React.FC<Props> = ({ toggled, toggleMenu }) => {
         { name: "LifeStyle", isActive: false }
     ];
 
-
     const toggleClearFilter = () => {
+        clearSort();
         clearFilter();
         clearSearch();
     };
+
     return (
         <div className="w-full">
             <div className="px-2 py-10 flex justify-end">

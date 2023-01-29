@@ -13,9 +13,7 @@ type Props = {
 
 const SelectField: React.FC<Props> = ({ classes, label, options, disabled, setValue, value }: Props) => {
     const [isOption, setIsOption] = useState<boolean>(false);
-
     const optionRef = useRef<HTMLInputElement>(null);
-
 
     useEffect(() => {
         let handleMenu = (e: any) => {

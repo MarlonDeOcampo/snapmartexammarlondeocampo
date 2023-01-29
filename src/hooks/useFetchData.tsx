@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Item } from '../models/item.model';
 import { Category } from '../models/store.model';
 
-
 const useFetchData = (url: string, method: string, filter: Category, searchString: string, sortby: string) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
@@ -61,6 +60,7 @@ const useFetchData = (url: string, method: string, filter: Category, searchStrin
                 });
         }
     }, [url, filter?.name, searchString, sortby]);
+
     return { data, error, isLoading };
 };
 

@@ -11,7 +11,6 @@ interface Props {
 const SuccessModal = ({
     message = "Thank you for purchasing",
     title = "Success!",
-    image = "",
     onClose
 }: Props) => {
     return createPortal(

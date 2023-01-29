@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "../components/card";
 import SelectField from "../components/reusable/select-field";
 import useFetchData from "../hooks/useFetchData";
@@ -13,10 +13,10 @@ const Home: React.FC = () => {
     const url = "https://mocki.io/v1/6da62792-8543-43e0-9d84-32baf3125060";
     const method = "get";
     const options = [
-        { name: "High to Low", value: "0" },
         { name: "Low to High", value: "1" },
+        { name: "High to Low", value: "0" },
     ];
-    const { data, error, isLoading } = useFetchData(
+    const { data } = useFetchData(
         url,
         method,
         category,
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     );
 
     useEffect(() => {
-        setSortString(options[1]?.name);
+        setSortString(options[0]?.name);
     }, []);
     return (
         <div className="w-full">
