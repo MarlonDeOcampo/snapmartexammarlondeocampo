@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <Suspense fallback={<div>Loading...</div>}>
       <Layout>
         <Routes>
-          <Route path="/snapmartexammarlondeocampo">
+          <Route path="/">
             <Route index element={<Home />} />
             <Route path='products' element={<Products />} />
           </Route>
