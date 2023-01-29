@@ -2,6 +2,19 @@ import { create } from 'zustand';
 import { searchStore, sortStore, SuccessModalStore } from '../models/store.model';
 
 
+export const useSearchStore = create<searchStore>((set) => ({
+    searchString: "",
+    setSearchString(payload: string) {
+        set((state) => ({
+            searchString: payload
+        }));
+    },
+    clearSearch() {
+        set(() => ({
+            searchString: ""
+        }));
+    }
+}));
 
 export const useSortStore = create<sortStore>((set) => ({
     sortby: "",
@@ -22,20 +35,6 @@ export const useSuccessModalStore = create<SuccessModalStore>((set) => ({
     setisOpen(payload: boolean) {
         set(() => ({
             isOpen: payload
-        }));
-    }
-}));
-
-export const useSearchStore = create<searchStore>((set) => ({
-    searchString: "",
-    setSearchString(payload: string) {
-        set((state) => ({
-            searchString: payload
-        }));
-    },
-    clearSearch() {
-        set(() => ({
-            searchString: ""
         }));
     }
 }));

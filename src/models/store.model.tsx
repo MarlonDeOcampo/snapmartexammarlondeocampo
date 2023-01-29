@@ -25,3 +25,20 @@ export type FilterStore = {
     setFilter: (filter: Category) => void;
     clearFilter: () => void;
 };
+
+export type searchStore = {
+    searchString: string;
+    setSearchString: (val: string) => void;
+    clearSearch: () => void;
+};
+
+export type sortStore = {
+    sortby: string;
+    setSortString: (val: string) => void;
+    clearSort: () => void;
+};
+
+export type SuccessModalStore = {
+    isOpen: boolean;
+    setisOpen: (val: boolean) => void;
+};
